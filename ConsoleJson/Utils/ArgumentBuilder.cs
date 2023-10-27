@@ -1,17 +1,44 @@
-﻿using ConsoleJson.Helpers;
+﻿#region Using
+using ConsoleJson.Helpers;
 using ConsoleJson.Models;
+#endregion
 
 namespace ConsoleJson.Utils
 {
+    #region Public Class ArgumentBuilder
+
+    /// <summary>
+    /// Класс для сборки аргументов из командной строки
+    /// </summary>
     public class ArgumentBuilder
     {
-        public Arguments myArguments;
+        #region Public Fields
 
+        /// <summary>
+        /// Хранение аргументов командной строки
+        /// </summary>
+        public Arguments myArguments;
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Конструктор, который принимает массив строк из аргументов командной строки
+        /// </summary>
+        /// <param name="args"></param>
         public ArgumentBuilder(string[] args)
         {
             myArguments = BuildArguments(args);
         }
+        #endregion
 
+        #region Private Methods
+
+        /// <summary>
+        /// Создание обьекта Arguments c валидацией данных
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         private Arguments BuildArguments(string[] args)
         {
             if(args != null && args.Length == 3)
@@ -34,5 +61,7 @@ namespace ConsoleJson.Utils
 
             return null;
         }
+        #endregion
     }
+    #endregion
 }

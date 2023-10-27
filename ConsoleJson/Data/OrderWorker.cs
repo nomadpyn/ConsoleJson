@@ -1,25 +1,62 @@
-﻿using ConsoleJson.Helpers;
+﻿#region Using
+using ConsoleJson.Helpers;
 using ConsoleJson.Models;
 using ConsoleJson.Utils;
 using System.Text.Json;
+#endregion
 
 namespace ConsoleJson.Data
 {
+    #region Public Class OrderWorker
+
+    /// <summary>
+    /// Основый класс программы для работы с order
+    /// </summary>
     public class OrderWorker
     {
+        #region Public Fields
+        
+        /// <summary>
+        /// Данные из файла order.json
+        /// </summary>
         public JsonOrder? Order { get; private set; }
 
+        /// <summary>
+        /// Значение валидности документа для работы 
+        /// </summary>
         public bool isValid { get; private set; } = false;
+        #endregion
 
+        #region Private Fields
+
+        /// <summary>
+        /// Аргументы командной строки
+        /// </summary>
         private Arguments Arguments;
 
+        /// <summary>
+        /// Логгер
+        /// </summary>
         private OrderLogger? logger;
 
+        /// <summary>
+        /// Делегат для выбора расчета налога по стране из аргументов
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <param name="subtotalamount"></param>
+        /// <returns></returns>
         private delegate decimal TaxCountryDelegage(int quantity, decimal subtotalamount);
+        #endregion
 
+        #region Constructor
+
+        /// <summary>
+        /// Конструктор, который принимает аргумент командной строки
+        /// Если аргументы корректные, то происходит загрузка файла и его валидация для дальнейшей работы
+        /// </summary>
+        /// <param name="arguments"></param>
         public OrderWorker(Arguments arguments)
         {
-
             Arguments = arguments;
 
             if (ValidateArguments())
@@ -31,14 +68,20 @@ namespace ConsoleJson.Data
                 isValid = ValidateFile();
             }
         }
+        #endregion
 
+        #region Public Methods
+
+        /// <summary>
+        /// Валидация данных
+        /// </summary>
+        /// <returns></returns>
         public bool ValidateFile()
         {
             if (Order != null)
             {
                 if (ValidateTaxValue() && ValidateLineItemsQuanity())
                 {
-
                     return SetValidateConfig(true);
                 }
                 return SetValidateConfig(false);
@@ -47,6 +90,10 @@ namespace ConsoleJson.Data
             return false;
         }
 
+        /// <summary>
+        /// Расчет налога
+        /// </summary>
+        /// <returns></returns>
         public bool CalculateTax()
         {
             TaxCountryDelegage taxCountry = SelectCountryToCalculateTax();
@@ -66,6 +113,10 @@ namespace ConsoleJson.Data
             return false;
         }
 
+        /// <summary>
+        /// Сохранение и логирование данных
+        /// </summary>
+        /// <returns></returns>
         public bool SaveAndLogOrder()
         {
             bool result = false;
@@ -100,7 +151,14 @@ namespace ConsoleJson.Data
 
             return result;
         }
+        #endregion
 
+        #region Private Methods
+
+        /// <summary>
+        /// Валидация аргументов командной строки
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateArguments()
         {
             if (Arguments != null)
@@ -112,6 +170,9 @@ namespace ConsoleJson.Data
             return false;
         }
 
+        /// <summary>
+        /// Загрузка данных из файла по указаному в аргументах пути
+        /// </summary>
         private void loadFile()
         {
             string path = Arguments.InputPath;
@@ -135,6 +196,10 @@ namespace ConsoleJson.Data
             }
         }
 
+        /// <summary>
+        /// Валидация документа по признаку Tax.Value
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateTaxValue()
         {
             if (Order != null && Order.Taxes.Count > 0)
@@ -153,6 +218,10 @@ namespace ConsoleJson.Data
             return false;
         }
 
+        /// <summary>
+        /// Валидация документа по признаку LineItems.Quanity
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateLineItemsQuanity()
         {
             if (Order != null && Order.LineItems.Count > 0)
@@ -169,6 +238,10 @@ namespace ConsoleJson.Data
             return false;
         }
 
+        /// <summary>
+        /// Выбор метода для расчета налога в зависимости от страны, указанной в аргументах
+        /// </summary>
+        /// <returns></returns>
         private TaxCountryDelegage SelectCountryToCalculateTax()
         {
             switch (Arguments.Country)
@@ -188,6 +261,12 @@ namespace ConsoleJson.Data
             }
         }
 
+        /// <summary>
+        /// Расчет налога для USA
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <param name="subtotalamount"></param>
+        /// <returns></returns>
         private decimal CalculateUsaTax(int quantity, decimal subtotalamount)
         {
             decimal taxAmount = 0;
@@ -200,6 +279,12 @@ namespace ConsoleJson.Data
             return decimal.Round(taxAmount, 2);
         }
 
+        /// <summary>
+        /// Расчет налога для RUS
+        /// </summary>
+        /// <param name="quantity"></param>
+        /// <param name="subtotalamount"></param>
+        /// <returns></returns>
         private decimal CalculateRusTax(int quantity, decimal subtotalamount)
         {
             decimal taxAmount = 0;
@@ -212,6 +297,10 @@ namespace ConsoleJson.Data
             return decimal.Round(taxAmount, 2);
         }
 
+        /// <summary>
+        /// Сохранение документа по указаному пути в аргументах
+        /// </summary>
+        /// <returns></returns>
         private bool SaveJsonFile()
         {
             bool saveStatus = false;
@@ -230,6 +319,11 @@ namespace ConsoleJson.Data
             return saveStatus;
         }
 
+        /// <summary>
+        /// Изменение параметров после валидации данных
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
         private bool SetValidateConfig(bool config)
         {
             if (config)
@@ -242,5 +336,7 @@ namespace ConsoleJson.Data
             return isValid;
 
         }
+        #endregion
     }
+    #endregion
 }
