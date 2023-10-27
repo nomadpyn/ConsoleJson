@@ -23,12 +23,15 @@
     - Где необходимо - добавить юнит тесты.
 
 Правила валидации:
+
     1 > order.tax.value >= 0;
+    
     20 >= lineItems.quantity > 0.
 
 Правила начисления налогов:
-    - Для USA налог является внешним по отношению к цене товара - необходимо взять (order.lineItems.quantity * order.lineItems.calculatedAmounts.subTotalAmount) * order.taxes.value;
 
-    - Для RUS налог является внутренним по отношению к цене товара - необходимо взять (order.lineItems.quantity * order.lineItems.calculatedAmounts.subTotalAmount) - (order.lineItems.quantity * order.lineItems.calculatedAmounts.subTotalAmount) / (1 + order.taxes.value).
+    Для USA налог является внешним по отношению к цене товара - необходимо взять (order.lineItems.quantity * order.lineItems.calculatedAmounts.subTotalAmount) * order.taxes.value;
+
+    Для RUS налог является внутренним по отношению к цене товара - необходимо взять (order.lineItems.quantity * order.lineItems.calculatedAmounts.subTotalAmount) - (order.lineItems.quantity * order.lineItems.calculatedAmounts.subTotalAmount) / (1 + order.taxes.value).
 
 Файл с примером - order.json. Необходимо создать папку "C:\Orders\" и положить этот файл в нее. Это необходимо для корректной работы программы, т.к. в проекте в настройках Debug и тестах указан путь для считывания файла "C:\Orders\order.json". Либо положить файл по своему усмотрению, но изменить путь к нему в программе и в аргументах.
