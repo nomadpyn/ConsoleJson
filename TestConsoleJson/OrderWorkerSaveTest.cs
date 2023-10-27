@@ -1,16 +1,29 @@
-﻿using ConsoleJson.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region
+using ConsoleJson.Data;
+#endregion
 
 namespace TestConsoleJson
 {
+    #region Public Class OrderWorkerSaveTest
+
+    /// <summary>
+    /// Тесты на сохранения данных
+    /// </summary>
     public class OrderWorkerSaveTest
     {
-        private OrderWorkerFactory orderWorkerFactory = new();
+        #region Private Fields
 
+        /// <summary>
+        /// Фабрика для создания OrderWorker
+        /// </summary>
+        private OrderWorkerFactory orderWorkerFactory = new();
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Тест при корректных аргументах
+        /// </summary>
         [Fact]
         public void TestSaveCorrectOrder()
         {
@@ -20,6 +33,9 @@ namespace TestConsoleJson
 
         }
 
+        /// <summary>
+        /// Тест при некорректном пути исходного файла
+        /// </summary>
         [Fact]
         public void TestSaveInCorrectInput()
         {
@@ -28,6 +44,9 @@ namespace TestConsoleJson
             Assert.False(orderWorker.SaveAndLogOrder());
         }
 
+        /// <summary>
+        /// Тест при некорректной стране
+        /// </summary>
         [Fact]
         public void TestSaveInCorrectCountry()
         {
@@ -36,6 +55,9 @@ namespace TestConsoleJson
             Assert.True(orderWorker.SaveAndLogOrder());
         }
 
+        /// <summary>
+        /// Тест при некорректном пути сохранения файла
+        /// </summary>
         [Fact]
         public void TestSaveInCorrectOutput()
         {
@@ -43,5 +65,7 @@ namespace TestConsoleJson
 
             Assert.False(orderWorker.SaveAndLogOrder());
         }
+        #endregion
     }
+    #endregion
 }

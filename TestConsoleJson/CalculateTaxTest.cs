@@ -99,7 +99,7 @@ namespace TestConsoleJson
         }
 
         [Fact]
-        public void TestLoadCorrectInValidItemsQuatityMoreOrder()
+        public void TestLoadCorrectInValidItemsQuantityMoreOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -111,7 +111,7 @@ namespace TestConsoleJson
         }
 
         [Fact]
-        public void TestLoadCorrectInValidAllItemsQuatityMoreOrder()
+        public void TestLoadCorrectInValidAllItemsQuantityMoreOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -126,7 +126,7 @@ namespace TestConsoleJson
         }
 
         [Fact]
-        public void TestLoadCorrectInValidItemsQuatityLessOrder()
+        public void TestLoadCorrectInValidItemsQuantityLessOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -138,7 +138,7 @@ namespace TestConsoleJson
         }
 
         [Fact]
-        public void TestLoadCorrectInValidAllItemsQuatityLessOrder()
+        public void TestLoadCorrectInValidAllItemsQuantityLessOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -153,7 +153,7 @@ namespace TestConsoleJson
         }
 
         [Fact]
-        public void TestLoadCorrectInValidTaxValueLessItemsQuatityMoreOrder()
+        public void TestLoadCorrectInValidTaxValueLessItemsQuantityMoreOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -166,7 +166,7 @@ namespace TestConsoleJson
         }
 
         [Fact]
-        public void TestLoadCorrectInValidAllTaxValueLessAllItemsQuatityMoreOrder()
+        public void TestLoadCorrectInValidAllTaxValueLessAllItemsQuantityMoreOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -186,7 +186,7 @@ namespace TestConsoleJson
         }
 
         [Fact]
-        public void TestLoadCorrectInValidTaxValueLessMoreItemsQuatityLessOrder()
+        public void TestLoadCorrectInValidTaxValueLessMoreItemsQuantityLessOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -199,7 +199,7 @@ namespace TestConsoleJson
         }
 
         [Fact]
-        public void TestLoadCorrectInValidAllTaxValueLessMoreAllItemsQuatityLessOrder()
+        public void TestLoadCorrectInValidAllTaxValueLessMoreAllItemsQuantityLessOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 

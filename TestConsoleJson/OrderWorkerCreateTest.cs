@@ -1,11 +1,22 @@
-﻿using ConsoleJson.Data;
+﻿#region Using
+using ConsoleJson.Data;
 using ConsoleJson.Models;
-using ConsoleJson.Utils;
+#endregion
 
 namespace TestConsoleJson
 {
+    #region Public Class OrderWorkerCreateTest
+
+    /// <summary>
+    /// Тесты на создание OrderWorker
+    /// </summary>
     public class OrderWorkerCreateTest
     {
+        #region Public Methods
+
+        /// <summary>
+        /// Тест при null аргументах
+        /// </summary>
         [Fact]
         public void TestCreateOrderWorkerNullArguments()
         {
@@ -16,6 +27,9 @@ namespace TestConsoleJson
             Assert.NotNull(worker);
         }
 
+        /// <summary>
+        /// Тест при пустых аргументах
+        /// </summary>
         [Fact]
         public void TestCreateOrderWorkerEmptyArguments()
         {
@@ -26,6 +40,9 @@ namespace TestConsoleJson
             Assert.NotNull(worker);
         }
 
+        /// <summary>
+        /// Тест при заполненых аргументах
+        /// </summary>
         [Fact]
         public void TestCreateOrderWorkerCorrectArguments()
         {
@@ -35,5 +52,7 @@ namespace TestConsoleJson
 
             Assert.NotNull(worker);
         }
+        #endregion
     }
+    #endregion
 }

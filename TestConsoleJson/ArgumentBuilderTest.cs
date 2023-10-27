@@ -1,9 +1,21 @@
+#region Using
 using ConsoleJson.Utils;
+#endregion
 
 namespace TestConsoleJson
 {
+    #region Public Class ArgumentBuilderTest
+
+    /// <summary>
+    /// Тесты на создание объекта аргументов из командной строки
+    /// </summary>
     public class ArgumentBuilderTest
     {
+        #region Public Fields
+
+        /// <summary>
+        /// Тест на ArgumentBuilder при пустых аргументах
+        /// </summary>
         [Fact]
         public void TestArgumentBuilderCreateNullArgs()
         {
@@ -14,6 +26,9 @@ namespace TestConsoleJson
             Assert.NotNull(builder);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder при одном аргументе
+        /// </summary>
         [Fact]
         public void TestArgumentBuilderCreateNotNullArgs()
         {
@@ -23,6 +38,10 @@ namespace TestConsoleJson
 
             Assert.NotNull(builder);
         }
+
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при пустых аргументах 
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateNullArgs()
         {
@@ -33,6 +52,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при одном аргументе
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateNotNullArgs()
         {
@@ -43,6 +65,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при одном некорректном аргументе 
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateOneWrongArg()
         {
@@ -53,6 +78,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при двух некорректных аргументах
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateTwoWrongArgs()
         {
@@ -63,6 +91,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при трех некорректных аргументах
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateThreeWrongArgs()
         {
@@ -73,6 +104,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при четырех некорректных аргументах
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateFourWrongArgs()
         {
@@ -83,6 +117,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при двух корректных аргументах (страна Rus)
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateTwoCorrectArgsRus()
         {
@@ -93,6 +130,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при трех некорректных аргументах (страна Rus)
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateThreeCorrectArgsRus()
         {
@@ -105,6 +145,9 @@ namespace TestConsoleJson
             Assert.True(builder.myArguments.Country.Equals("RUS"));
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при четырех некорректных аргументах (страна Rus)
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateFourCorrectArgsRus()
         {
@@ -115,6 +158,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при двух корректных аргументах (страна Usa)
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateTwoCorrectArgsUsa()
         {
@@ -125,6 +171,9 @@ namespace TestConsoleJson
             Assert.Null(builder.myArguments);
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при трех корректных аргументах (страна Usa)
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateThreeCorrectArgsUsa()
         {
@@ -137,6 +186,9 @@ namespace TestConsoleJson
             Assert.True(builder.myArguments.Country.Equals("USA"));
         }
 
+        /// <summary>
+        /// Тест на ArgumentBuilder.myArguments при четырех корректных аргументах (страна Usa)
+        /// </summary>
         [Fact]
         public void TestArgumentsCreateFourCorrectArgsUsa()
         {
@@ -146,7 +198,7 @@ namespace TestConsoleJson
 
             Assert.Null(builder.myArguments);
         }
-
-
+        #endregion
     }
+    #endregion
 }

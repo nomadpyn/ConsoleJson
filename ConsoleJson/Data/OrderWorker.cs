@@ -80,7 +80,7 @@ namespace ConsoleJson.Data
         {
             if (Order != null)
             {
-                if (ValidateTaxValue() && ValidateLineItemsQuanity())
+                if (ValidateTaxValue() && ValidateLineItemsQuantity())
                 {
                     return SetValidateConfig(true);
                 }
@@ -219,10 +219,10 @@ namespace ConsoleJson.Data
         }
 
         /// <summary>
-        /// Валидация документа по признаку LineItems.Quanity
+        /// Валидация документа по признаку LineItems.Quantity
         /// </summary>
         /// <returns></returns>
-        private bool ValidateLineItemsQuanity()
+        private bool ValidateLineItemsQuantity()
         {
             if (Order != null && Order.LineItems.Count > 0)
             {

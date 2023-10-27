@@ -1,20 +1,40 @@
-﻿using ConsoleJson.Data;
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Engine;
+﻿#region Using 
+using ConsoleJson.Data;
+#endregion
 
 namespace TestConsoleJson
 {
+    #region Public Class OrderWorkerValidateTest
+
+    /// <summary>
+    /// Тесты на валидацию данных в OrderWorker
+    /// </summary>
     public class OrderWorkerValidateTest
     {
-        private OrderWorkerFactory orderWorkerFactory = new();
+        #region Private Fields
 
+        /// <summary>
+        /// Фабрика для создания OrderWorker
+        /// </summary>
+        private OrderWorkerFactory orderWorkerFactory = new();
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Тест на валидацию при корректных данных с корректными аргументами
+        /// </summary>
         [Fact]
         public void TestValidateValidOrderCorrectOrderWorker()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
             Assert.True(orderWorker.ValidateFile());
-        }        
+        }
 
+        /// <summary>
+        /// Тест на валидацию при корректных данных с некорректным путем до исходного файла
+        /// </summary>
         [Fact]
         public void TestValidateValidOrderInCorrectInputOrderWorker()
         {
@@ -23,6 +43,9 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при корректных данных с некорректным страной в аргументах
+        /// </summary>
         [Fact]
         public void TestValidateValidOrderInCorrectCountryOrderWorker()
         {
@@ -31,6 +54,9 @@ namespace TestConsoleJson
             Assert.True(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при корректных данных с некорректным путем для сохранения файла
+        /// </summary>
         [Fact]
         public void TestValidateValidOrderInCorrectOutputOrderWorker()
         {
@@ -39,6 +65,9 @@ namespace TestConsoleJson
             Assert.True(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при некорректных данных TaxValue (больше) при корректных аргументах
+        /// </summary>
         [Fact]
         public void TestLoadCorrectInValidTaxValueMoreOrder()
         {
@@ -49,6 +78,9 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        ///  Тест на валидацию при некорректных данных TaxValue(несколько больше) при корректных аргументах
+        /// </summary>
         [Fact]
         public void TestLoadCorrectInValidAllTaxValueMoreOrder()
         {
@@ -62,6 +94,9 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        ///  Тест на валидацию при некорректных данных TaxValue (меньше) при корректных аргументах
+        /// </summary>
         [Fact]
         public void TestLoadCorrectInValidTaxValueLessOrder()
         {
@@ -72,6 +107,9 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        ///  Тест на валидацию при некорректных данных TaxValue (несколько меньше) при корректных аргументах
+        /// </summary>
         [Fact]
         public void TestLoadCorrectInValidAllTaxValueLessOrder()
         {
@@ -85,8 +123,11 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        ///  Тест на валидацию при некорректных данных LineItemsQuantity (больше) при корректных аргументах
+        /// </summary>
         [Fact]
-        public void TestLoadCorrectInValidItemsQuatityMoreOrder()
+        public void TestLoadCorrectInValidItemsQuantityMoreOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -95,8 +136,11 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при некорректных данных LineItemsQuantity (несколько больше) при корректных аргументах
+        /// </summary>
         [Fact]
-        public void TestLoadCorrectInValidAllItemsQuatityMoreOrder()
+        public void TestLoadCorrectInValidAllItemsQuantityMoreOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -108,8 +152,11 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при некорректных данных LineItemsQuantity (меньше) при корректных аргументах
+        /// </summary>
         [Fact]
-        public void TestLoadCorrectInValidItemsQuatityLessOrder()
+        public void TestLoadCorrectInValidItemsQuantityLessOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -118,8 +165,11 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при некорректных данных LineItemsQuantity (несколько меньше) при корректных аргументах
+        /// </summary>
         [Fact]
-        public void TestLoadCorrectInValidAllItemsQuatityLessOrder()
+        public void TestLoadCorrectInValidAllItemsQuantityLessOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -131,8 +181,11 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при некорректных данных TaxValue (меньше) и LineItemsQuantity (больше) при корректных аргументах
+        /// </summary>
         [Fact]
-        public void TestLoadCorrectInValidTaxValueLessItemsQuatityMoreOrder()
+        public void TestLoadCorrectInValidTaxValueLessItemsQuantityMoreOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -142,8 +195,11 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при некорректных данных TaxValue (несколько меньше) и LineItemsQuantity (несколько больше) при корректных аргументах
+        /// </summary>
         [Fact]
-        public void TestLoadCorrectInValidAllTaxValueLessAllItemsQuatityMoreOrder()
+        public void TestLoadCorrectInValidAllTaxValueLessAllItemsQuantityMoreOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -160,8 +216,11 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при некорректных данных TaxValue (больше) и LineItemsQuantity (меньше) при корректных аргументах
+        /// </summary>
         [Fact]
-        public void TestLoadCorrectInValidTaxValueLessMoreItemsQuatityLessOrder()
+        public void TestLoadCorrectInValidTaxValueLessMoreItemsQuantityLessOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -171,8 +230,11 @@ namespace TestConsoleJson
             Assert.False(orderWorker.ValidateFile());
         }
 
+        /// <summary>
+        /// Тест на валидацию при некорректных данных TaxValue (несколько больше) и LineItemsQuantity (несколько меньше) при корректных аргументах
+        /// </summary>
         [Fact]
-        public void TestLoadCorrectInValidAllTaxValueLessMoreAllItemsQuatityLessOrder()
+        public void TestLoadCorrectInValidAllTaxValueLessMoreAllItemsQuantityLessOrder()
         {
             OrderWorker orderWorker = orderWorkerFactory.CreateCorrectOrderWorker();
 
@@ -188,6 +250,7 @@ namespace TestConsoleJson
 
             Assert.False(orderWorker.ValidateFile());
         }
-
+        #endregion
     }
+    #endregion
 }
