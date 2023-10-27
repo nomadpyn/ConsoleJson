@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConsoleJson": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Orders\\order.json\" \"USA\" \"C:\\Orders\\order_out.json\""
+    }
+  }
+}
